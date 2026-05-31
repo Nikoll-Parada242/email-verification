@@ -7,15 +7,6 @@ from tkinter import font as tkfont
 def analyze_email(subject, content):
     """
     Analiza el asunto y contenido de un correo para determinar su nivel de riesgo.
-    
-    PLACEHOLDER PARA FUTURAS INTEGRACIONES:
-    Aquí es donde más adelante puedes integrar:
-    1. Un modelo de Machine Learning de NLP (ej. entrenado con Scikit-Learn o TensorFlow).
-    2. Una llamada de API externa (ej. VirusTotal, PhishTank, OpenAI API, etc.).
-    
-    Ejemplo de integración de API simulada:
-    # response = requests.post("https://api.seguridad.com/analizar", json={"text": text})
-    # return response.json()
     """
     
     # Base de palabras clave sospechosas con sus respectivos pesos de riesgo
@@ -153,10 +144,10 @@ class InputScreen(tk.Frame):
         card.pack(pady=25, padx=25, fill="both", expand=True)
         
         # Icono y encabezado
-        header_icon = tk.Label(card, text="🛡️", font=("Segoe UI", 36), bg="#1e293b", fg="#6366f1")
-        header_icon.pack(pady=(20, 5))
+        header_icon = tk.Label(card, text="🛡️", font=("Segoe UI", 36), bg="#1e293b", fg="#6366f1", anchor="center")
+        header_icon.pack(pady=(20, 5), anchor="center")
         
-        title_label = tk.Label(card, text="Analizador de Correos", font=("Segoe UI", 18, "bold"), bg="#1e293b", fg="#f8fafc")
+        title_label = tk.Label(card, text="Guardian de Correos", font=("Segoe UI", 18, "bold"), bg="#1e293b", fg="#f8fafc")
         title_label.pack(pady=5)
         
         subtitle_label = tk.Label(
@@ -263,9 +254,13 @@ class ResultScreen(tk.Frame):
         card = tk.Frame(self, bg="#1e293b", highlightthickness=1, highlightbackground="#334155")
         card.pack(pady=25, padx=25, fill="both", expand=True)
         
+        # Título de la aplicación (Branding)
+        brand_label = tk.Label(card, text="Guardian de Correos", font=("Segoe UI", 12, "bold"), bg="#1e293b", fg="#94a3b8")
+        brand_label.pack(pady=(15, 0))
+        
         # Banner del veredicto dinámico
         verdict_frame = tk.Frame(card, bg=accent_bg, highlightthickness=1, highlightbackground=border_color)
-        verdict_frame.pack(fill="x", padx=25, pady=(25, 15), ipady=10)
+        verdict_frame.pack(fill="x", padx=25, pady=(10, 15), ipady=10)
         
         lbl_verdict = tk.Label(verdict_frame, text=header_text, font=("Segoe UI", 14, "bold"), bg=accent_bg, fg=theme_color)
         lbl_verdict.pack(pady=(5, 2))
@@ -328,7 +323,7 @@ class ResultScreen(tk.Frame):
 class EmailVerifierApp(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("Email Guard - Analizador de Phishing")
+        self.title("Guardian de Correos")
         self.geometry("540x680")
         self.configure(bg="#0f172a")
         self.resizable(False, False)
